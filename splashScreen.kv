@@ -1,0 +1,33 @@
+MDScreen:
+    name: "SplashScreen"
+    on_enter: self.ids.progress.start()
+    BoxLayout:
+        orientation: "vertical"
+        MDLabel:
+            text: f"[color=#FFD700]AOS[/color]"
+            color: app.theme_cls.primary_color
+            halign: "center"
+            markup: True
+            font_style: "H4"
+        BoxLayout:
+            padding: '50dp'
+            Image:
+                source: "assets/lg-logo.png"
+                allow_stretch: True
+                size_hint: 3, 3
+                halign: "center"
+        BoxLayout:
+            size_hint_y: 0.01
+            orientation: "vertical"
+            padding: "10pd"
+            MDProgressBar:
+                id: progress
+                type: "determinate"
+                size_hint_x: .5
+                color: app.theme_cls.accent_color
+                running_duration: 3
+                catching_duration: 1
+                pos_hint: {"center_x": .5}
+        BoxLayout:
+            orientation: "vertical"
+            MDLabel:
