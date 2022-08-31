@@ -1,8 +1,198 @@
+<ItemDrawer>:
+    theme_text_color: "Custom"
+    on_release: self.parent.set_color_item(self)
+
+    IconLeftWidget:
+        id: icon
+        icon: root.icon
+        theme_text_color: "Custom"
+        text_color: root.text_color
+
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+    AnchorLayout:
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "56dp", "56dp"
+            source: "assets/Xsm-logo.png"
+
+    MDLabel:
+        text: "Quiz App"
+        font_style: "Button"
+        adaptive_height: True
+        color: app.theme_cls.accent_color
+
+    MDLabel:
+        text: "samuel90ezekiel@gmail.com"
+        font_style: "Caption"
+        adaptive_height: True
+        color: app.theme_cls.accent_color
+
+    ScrollView:
+
+        DrawerList:
+            id: md_list
+            icon: "folder"
+            text: "My files"
+            # MDLabel:
+            #     id: btn2
+            #     text:'Join Community'
+            #     icon: "account-group"
+            #     orientation: 'vertical'
+            #     size_hint: 1, None
+
+
+
+
+
 MDScreen:
     name: "Home"
-    BoxLayout:
-        padding: "10dp"
-        MDLabel:
-            text: 'MAIN SCREEN'
-            font_style: "H6"
-            halign: "center"
+    size: self.size
+    # BoxLayout:
+    #     padding: "10dp"
+    #     MDLabel:
+    #         text: 'MAIN SCREEN'
+    #         font_style: "H6"
+    #         halign: "center"
+
+    MDNavigationLayout:
+
+        ScreenManager:
+
+            MDScreen:
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    MDTopAppBar:
+                        title: "QUIZ APP"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+                        # on_enter: app.nav_list()
+
+                    Widget:
+                    MDGridLayout:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        width: self.minimum_width
+                        cols: 2
+                        pos_hint: {'x': 0.0, 'y': 0.09}
+                        spacing: "20dp", "50dp"
+                        padding: "20dp"
+
+                        RoundedButton:
+                            id: btn1
+                            text:'Home'
+                            icon: "home"
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "200dp"
+
+                        RoundedButton:
+                            id: btn2
+                            text:'Join Community'
+                            icon: "account-group"
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "200dp"
+
+                        RoundedButton:
+                            id: btn3
+                            text:'visit our website'
+                            icon: "web"
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "200dp"
+                            on_press: app.our_webpage()
+
+                        RoundedButton:
+                            id: btn4
+                            text:'contact us'
+                            icon: "whatsapp"
+                            orientation: 'vertical'
+                            size_hint: 1, None
+                            height: "200dp"
+
+
+
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            opening_transition: 'out_bounce'
+            opening_time: 1
+            opening_transition: 'in_out_bounce'
+            closing_time: 2
+
+            ContentNavigationDrawer:
+                id: content_drawer
+                FlatButton:
+                    text: "MAT111"
+                FlatButton:
+                    text: "GST101"
+                FlatButton:
+                    text: "MAT112"
+                FlatButton:
+                    text: "PHY123"
+                FlatButton:
+                    text: "CHM111"
+                FlatButton:
+                    text: "MAT121"
+                Widget:
+
+
+<RoundedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    color: app.theme_cls.accent_color
+    icon_size: "50sp"
+    canvas.before:
+        Color:
+            rgba: (70/255, 78/255, 81/255, 0.9)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [15]
+
+<FlatButton@MDRectangleFlatIconButton>
+    icon: "book"
+    size_hint_x: 1
+    theme_text_color: "Custom"
+    text_color: app.theme_cls.accent_color
+    line_color: 0, 0, 0, 1
+    theme_icon_color: "Custom"
+    icon_color: app.theme_cls.accent_color
+    background_color: (0,0,0,0)
+    background_normal: ''
+    color: app.theme_cls.accent_color
+    canvas.before:
+        Color:
+            rgba: (70/255, 78/255, 81/255, 0.9)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [5]
+
+
+# MDNavigationLayout:
+#     MDNavigationDrawer:
+#         MDNavigationDrawerIconButton:
+#             text: "Home"
+#             on_release:
+#                 Screen_manager.current = "Home"
+#         NavigationDrawerIconButton:
+#             text: "Math111"
+#             on_release:
+#                 Screen_manager.current = "Math111"
+
+
+    # ScreenManager:
+    #     id: screen_manager
