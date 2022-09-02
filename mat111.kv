@@ -1,0 +1,320 @@
+# <ItemDrawer>:
+#    theme_text_color: "Custom"
+#    on_release: self.parent.set_color_item(self)
+
+#    IconLeftWidget:
+#       id: icon
+#       icon: root.icon
+#       theme_text_color: "Custom"
+#       text_color: root.text_color
+
+
+# <ContentNavigationDrawer>:
+#    orientation: "vertical"
+#    padding: "8dp"
+#    spacing: "8dp"
+
+#    AnchorLayout:
+#       anchor_x: "left"
+#       size_hint_y: None
+#       height: avatar.height
+
+#       Image:
+#          id: avatar
+#          size_hint: None, None
+#          size: "56dp", "56dp"
+#          source: "assets/Xsm-logo.png"
+
+#    MDLabel:
+#       text: "Quiz App"
+#       font_style: "Button"
+#       adaptive_height: True
+#       color: app.theme_cls.accent_color
+
+#    MDLabel:
+#       text: "samuel90ezekiel@gmail.com"
+#       font_style: "Caption"
+#       adaptive_height: True
+#       color: app.theme_cls.accent_color
+
+#    ScrollView:
+
+#       DrawerList:
+#          id: md_list
+
+
+MDScreen:
+   name: "Mat111"
+   size: self.size
+
+   MDNavigationLayout:
+
+      ScreenManager:
+
+         MDScreen:
+
+            BoxLayout:
+               orientation: 'vertical'
+               spacing: 10
+               canvas:
+                  Color:
+                     rgba: (70/255, 78/255, 81/255, 0.9)
+                  RoundedRectangle:
+                     size: 900, 450
+                     pos: 10, 50
+               MDTopAppBar:
+                  title: "MAT111 QUIZ"
+                  elevation: 10
+                  left_action_items: [['close', lambda x: nav_drawer.set_state("open")]]
+               MDBoxLayout:
+                  orientation: "vertical"
+                  size: root.width, root.height
+                  padding: "10dp"
+                  spacing: -50
+                  # canvas:
+                  #    Color:
+                  #       rgba: (34/255, 42/255, 54/255, 0.4)
+                  #    RoundedRectangle:
+                  #       size: 900, 500
+                  #       pos: 0, 20
+                  #       # pos: self.pos
+                  #       radius: [3]
+                  MDBoxLayout:
+                     orientation: "vertical"
+                     size: root.width, root.height
+                     padding: "10dp"
+                     spacing: -50
+                     MDLabel:
+                        text: 'Question 1'
+                        font_style: "H6"
+                     MDLabel:
+                        text: "What is X + 1"
+                        # font_style: "H4"
+                        font_size: 20
+                  StackLayout:
+                     spacing: "10dp"
+                     padding: "20dp"
+                     GridLayout:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        width: self.minimum_width
+                        cols: 2
+                        spacing: "-10dp", "10dp"
+                        padding: "-20dp", "5dp"
+                        canvas.before:
+                           Color:
+                              rgba: 1, 1, 1, .2
+                           Line:
+                              width:1
+                              rectangle: self.x, self.y, self.width, self.height
+                        CheckBox:
+                           group: "pizza_toppings"
+                           height: 32
+                           size_hint: None, None
+                           valign: 'middle'
+                           halign: 'left'
+                        Label:
+                           id: lab1
+                           text: "pizza"
+                           color: 0, 0, 0, 1
+                           size_hint: None, 1
+                           size: self.texture_size
+                     GridLayout:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        width: self.minimum_width
+                        cols: 2
+                        spacing: "-10dp", "10dp"
+                        padding: "-20dp", "5dp"
+                        canvas.before:
+                           Color:
+                              rgba: 1, 1, 1, .2
+                           Line:
+                              width:1
+                              rectangle: self.x, self.y, self.width, self.height
+                        CheckBox:
+                           group: "pizza_toppings"
+                           height: 32
+                           size_hint: None, None
+                           # valign: 'middle'
+                           # halign: 'left'
+                        Label:
+                           id: lab2
+                           text: "Cheese"
+                           color: 0, 0, 0, 1
+                           size_hint: None, 1
+                           size: self.texture_size
+                     GridLayout:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        width: self.minimum_width
+                        cols: 2
+                        spacing: "-10dp", "10dp"
+                        padding: "-20dp", "5dp"
+                        canvas.before:
+                           Color:
+                              rgba: 1, 1, 1, .2
+                           Line:
+                              width:1
+                              rectangle: self.x, self.y, self.width, self.height
+                        CheckBox:
+                           group: "pizza_toppings"
+                           height: 32
+                           size_hint: None, None
+                           # valign: 'middle'
+                           # halign: 'left'
+                        Label:
+                           id: lab3
+                           text: "Mushroom"
+                           color: 0, 0, 0, 1
+                           size_hint: None, 1
+                           size: self.texture_size
+                  BoxLayout:
+                     orientation: 'vertical'
+                     spacing: 10
+                     padding: 10, -20
+                     MDRaisedButton:
+                        text: "Previous Question"
+                        md_bg_color: 1, 1, 1, 0.5
+                        text_color: app.theme_cls.accent_color
+                        pos: self.pos
+                     MDRaisedButton:
+                        text: "Next Question"
+                        md_bg_color: 1, 1, 1, 0.5
+                        text_color: app.theme_cls.accent_color
+                        size: self.size
+                        pos: self.pos
+                  # Widget:
+                  # Label:
+                  #    id: output_label
+                  #    text: "OUTPUT"
+                  #    color: 0, 0, 0, 1
+                  #    size_hint: None, 1
+                  #    size: self.texture_size
+               # MDBoxLayout:
+               #    orientation: "vertical"
+               #    size: root.width, root.height
+               #    padding: "10dp"
+               #    spacing: "30dp"
+               #    canvas:
+               #       Color:
+               #          rgba: (34/255, 42/255, 54/255, 0.9)
+               #       Rectangle:
+               #          size: self.size
+               #          pos: self.pos
+               #    MDLabel:
+               #       text: 'Question 2'
+               #       font_style: "H6"
+               #    MDLabel:
+               #       text: "What is y + 1"
+               #       # font_style: "H4"
+               #       font_size: 20
+               #    GridLayout:
+               #       size_hint_y: None
+               #       height: self.minimum_height
+               #       width: self.minimum_width
+               #       cols: 2
+               #       spacing: "-10dp", "10dp"
+               #       padding: "-20dp", "5dp"
+               #       CheckBox:
+               #          group: "pizza_toppings"
+               #          height: 32
+               #          size_hint: None, None
+               #          valign: 'middle'
+               #          halign: 'left'
+               #       Label:
+               #          id: lab1
+               #          text: "pizza"
+               #          color: 0, 0, 0, 1
+               #          size_hint: None, 1
+               #          size: self.texture_size
+
+               #       CheckBox:
+               #          group: "pizza_toppings"
+               #          height: 32
+               #          size_hint: None, None
+               #          # valign: 'middle'
+               #          # halign: 'left'
+               #       Label:
+               #          id: lab2
+               #          text: "Cheese"
+               #          color: 0, 0, 0, 1
+               #          size_hint: None, 1
+               #          size: self.texture_size
+               #       CheckBox:
+               #          group: "pizza_toppings"
+               #          height: 32
+               #          size_hint: None, None
+               #          # valign: 'middle'
+               #          # halign: 'left'
+               #       Label:
+               #          id: lab3
+               #          text: "Mushroom"
+               #          color: 0, 0, 0, 1
+               #          size_hint: None, 1
+               #          size: self.texture_size
+                  Widget:
+
+
+      MDNavigationDrawer:
+         id: nav_drawer
+         # opening_transition: 'out_bounce'
+         # opening_time: 1
+         opening_transition: 'in_out_bounce'
+         closing_time: 2
+
+         ContentNavigationDrawer:
+            id: content_drawer
+            FlatButton:
+               text: "Home Page"
+               on_press: app.home()
+            FlatButton:
+               text: "MAT111"
+               on_press: app.mat111()
+            FlatButton:
+               text: "GST101"
+            FlatButton:
+               text: "MAT112"
+            FlatButton:
+               text: "PHY123"
+            FlatButton:
+               text: "CHM111"
+            FlatButton:
+               text: "MAT121"
+            Widget:
+
+<FlatButton@RectangleFlatIconButton>
+   icon: "book"
+   size_hint_x: 1
+   theme_text_color: "Custom"
+   text_color: app.theme_cls.accent_color
+   line_color: 0, 0, 0, 1
+   theme_icon_color: "Custom"
+   icon_color: app.theme_cls.accent_color
+   background_color: (0,0,0,0)
+   background_normal: ''
+   color: app.theme_cls.accent_color
+   canvas.before:
+      Color:
+         rgba: (70/255, 78/255, 81/255, 0.9)
+      RoundedRectangle:
+         size: self.size
+         pos: self.pos
+         radius: [5]
+<MDRaisedButton>:
+   size_hint_x: 1
+<RadioButton>:
+   id: radiobtn
+   orientation: 'horizontal'
+   group: 'btn'
+   size_hint: 1, None
+   height: 32
+   valign: 'middle'
+   on_touch_down: root.on_change_checkbox()
+<ToomaxWindow>:
+   orientation: 'vertical'
+   spacing: 2
+   RadioButton:
+      # Set the first radio button to selected
+      selected: True
+   RadioButton:
