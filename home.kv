@@ -41,14 +41,6 @@
 
         DrawerList:
             id: md_list
-            icon: "folder"
-            text: "My files"
-            # MDLabel:
-            #     id: btn2
-            #     text:'Join Community'
-            #     icon: "account-group"
-            #     orientation: 'vertical'
-            #     size_hint: 1, None
 
 
 
@@ -70,7 +62,7 @@ MDScreen:
 
             MDScreen:
 
-                MDBoxLayout:
+                BoxLayout:
                     orientation: 'vertical'
                     MDTopAppBar:
                         title: "QUIZ APP"
@@ -95,6 +87,7 @@ MDScreen:
                             orientation: 'vertical'
                             size_hint: 1, None
                             height: "200dp"
+                            on_press: app.home()
 
                         RoundedButton:
                             id: btn2
@@ -120,6 +113,7 @@ MDScreen:
                             orientation: 'vertical'
                             size_hint: 1, None
                             height: "200dp"
+                            on_press: app.whatsapp()
 
 
 
@@ -127,15 +121,19 @@ MDScreen:
 
         MDNavigationDrawer:
             id: nav_drawer
-            opening_transition: 'out_bounce'
-            opening_time: 1
+            # opening_transition: 'out_bounce'
+            # opening_time: 1
             opening_transition: 'in_out_bounce'
             closing_time: 2
 
             ContentNavigationDrawer:
                 id: content_drawer
                 FlatButton:
+                    text: "Home Page"
+                    on_press: app.home()
+                FlatButton:
                     text: "MAT111"
+                    on_press: app.mat111()
                 FlatButton:
                     text: "GST101"
                 FlatButton:
