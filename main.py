@@ -4,7 +4,10 @@ from kivy.config import Config
 from kivy.core.window import  Window
 from kivy.clock import Clock
 from kivy.uix.screenmanager import ScreenManager
-from kivy.properties import StringProperty, ListProperty
+from kivy.properties import StringProperty, ListProperty, BooleanProperty
+from kivy.uix.behaviors import ToggleButtonBehavior
+from kivymd.uix.boxlayout import BoxLayout
+from kivy.utils import get_color_from_hex
 
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -21,10 +24,19 @@ import webbrowser
 Config.set("kivy", "exit_on_escape", "0")
 Window.softinput_mode = 'below_target'
 Window.size = (350, 600)
+Window.clearcolor = get_color_from_hex('#ffffff')
+    
+
+class MDRaisedButton(MDBoxLayout):
+    pass
+
     
     
-    
-    
+class RadioButton(ToggleButtonBehavior, BoxLayout):  
+    selected = BooleanProperty(False)  
+    def on_change_checkbox(self):
+        ToggleButtonBehavior._do_press(self.children[1])
+        self.selected = True    
 
 class ContentNavigationDrawer(MDBoxLayout):
     pass
@@ -59,9 +71,10 @@ class Quiz(MDApp):
         self.icon = "assets/Xsm-logo.png"
         theme_cls = ThemeManager()
         self.theme_cls.primary_palette = "LightBlue"
-        Window.clearcolor = (1,1,1,1)
+        # Window.clearcolor = (1,1,1,1)
         screen_manager.add_widget(Builder.load_file("splashScreen.kv"))
         screen_manager.add_widget(Builder.load_file("home.kv"))
+        screen_manager.add_widget(Builder.load_file("mat111.kv"))
         return screen_manager
     
     
@@ -88,7 +101,14 @@ class Quiz(MDApp):
     def our_webpage(self):
         webbrowser.open('https://aosinfo4allschool.wordpress.com/')
      
+    def whatsapp(self):
+        webbrowser.open('https://wa.me/qr/WG4NM4ECHLIUG1')
     
+    def home(self):
+        screen_manager.current = "Home"
+    def mat111(self):
+        screen_manager.current = "Mat111"
+        
     
     
 Quiz().run()
